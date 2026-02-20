@@ -10,13 +10,13 @@
 ## TODO
 
 - nvim
-- hyprlock
+- hyprlock ✅
 - install script
 - test install script
 - maybe swap hyprpanel
 - fastfetch
-- rofi style (like in omarchy)
-- emoji picker
+- rofi style (like in omarchy) (maybe this is walker)
+- emoji picker ✅(50/50)
 - chaoric aur
 - redact a screenshot (like in omarchy)
 - screensaver
