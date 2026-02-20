@@ -19,3 +19,4 @@
 - emoji picker
 - chaoric aur
 - redact a screenshot (like in omarchy)
+- screensaver
