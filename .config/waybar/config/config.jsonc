@@ -20,6 +20,7 @@
 
       "modules-right": [
           "network",
+          "pulseaudio",
           "clock",
           "hyprland/language",
           "backlight",
@@ -80,6 +81,20 @@
           "tooltip-format-wifi": "{essid}\n{signalStrength}%\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
           "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
           "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
+      },
+
+      "pulseaudio": {
+          "format": "{icon} {volume}%",
+          "format-muted": "󰝟 {volume}%",
+          "format-bluetooth": "{icon} {volume}%",
+          "format-icons": {
+              "default": ["", "", ""]
+          },
+          "scroll-step": 2,
+          "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+          "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+          "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+          "tooltip": true
       },
 
       "hyprland/window": {

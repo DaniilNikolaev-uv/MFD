@@ -121,6 +121,7 @@
 
 /* Right-side blocks */
 #waybar.main #network,
+#waybar.main #pulseaudio,
 #waybar.main #clock,
 #waybar.main #language,
 #waybar.main #backlight,
@@ -138,6 +139,13 @@
 }
 #waybar.main #network.disconnected {
     color: @red;
+}
+
+#waybar.main #pulseaudio {
+    color: @mauve;
+}
+#waybar.main #pulseaudio.muted {
+    color: @overlay1;
 }
 
 #waybar.main #clock {
