@@ -1,0 +1,320 @@
+/* vim:fileencoding=utf-8:foldmethod=marker:ft=css
+*/
+
+/* Define colors */
+/* {{{ */
+@define-color background1 rgba(32, 32, 48, 1);
+@define-color background2 rgba(21, 21, 32, 1);
+@define-color sepepator #313244;
+@define-color warning #f38ba8;
+@define-color caution #45475a;
+@define-color performance #f5c2e7;
+@define-color audio #cba6f7;
+@define-color misc #94e2d5;
+@define-color date #a6e3a1;
+@define-color work #b4befe;
+@define-color window #b4befe;
+@define-color resize #eba0ac;
+@define-color process #89b4fa;
+@define-color text #000000;
+/* }}} */
+
+/* Reset all styles */
+/* {{{ */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* }}} */
+
+/* Main bar keyframes */
+/* {{{ */
+
+/* Keyframes for main bar criticals */
+
+@keyframes blink-urgent-workspace {
+    to {
+        color: @warning;
+        /* background-image: linear-gradient( */
+        /*   -63.435deg, */
+        /*   transparent 25%, */
+        /*   @warning 25%, */
+        /*   @warning 75%, */
+        /*   transparent 75% */
+        /* ); */
+    }
+}
+
+@keyframes blink-critical-text {
+    to {
+        color: @sepepator;
+    }
+}
+
+/* Keyframes for main bar modifiers */
+@keyframes blink-modifier-text {
+    to {
+        color: @sepepator;
+    }
+}
+
+@keyframes blink-special-workspace {
+    to {
+        color: @window;
+    }
+}
+
+/* }}} */
+
+/* Main bar defaults */
+/* {{{ */
+#waybar.main {
+    background: @background2;
+    font-family: "JetBrainsMono Nerd Font propo";
+    font-size: 12pt;
+    font-weight: 600;
+    color: @text;
+    border-radius: 6pt;
+}
+
+#waybar.main > box {
+    min-height: 28px;
+}
+
+#waybar.main image,
+#waybar.main label {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 24px;
+}
+
+#waybar.main button {
+    font-family: "JetBrains Mono Nerd Font propo";
+    font-size: 12pt;
+    font-weight: 600;
+    color: @text;
+}
+
+/* }}} */
+
+/* Main bar modules */
+/* {{{ */
+#waybar.main #network,
+#waybar.main #backlight,
+#waybar.main #clock,
+#waybar.main #language,
+#waybar.main #window,
+#waybar.main #battery {
+    padding-left: 8pt;
+    padding-right: 8pt;
+}
+
+#waybar.main #network {
+    color: @performance;
+    background: @background1;
+}
+
+#waybar.main #language,
+#waybar.main #backlight,
+#waybar.main #battery {
+    color: @misc;
+    background: @background1;
+}
+
+#waybar.main #clock {
+    color: @date;
+    background: @background2;
+    border-radius: 0pt 6pt 6pt 0pt;
+}
+
+#waybar.main #window {
+    color: @window;
+    box-shadow: none;
+    font-style: italic;
+}
+
+#waybar.main #network.wifi {
+    color: @warning;
+}
+
+#waybar.main #network.ethernet {
+    color: @performance;
+}
+
+/* }}} */
+
+/* Main bar criticals */
+/* {{{ */
+#waybar.main #workspaces button.urgent,
+#waybar.main #workspaces button.special.urgent {
+    transition: all 0s ease;
+    background-image: linear-gradient(
+        -63.435deg,
+        transparent 25%,
+        @background2 25%,
+        @background2 75%,
+        transparent 75%
+    );
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-name: blink-urgent-workspace;
+    animation-duration: 1s;
+    animation-timing-function: steps(15);
+}
+
+/* }}} */
+
+/* Workspaces */
+/* {{{ */
+/* Default workspace settings */
+
+#waybar.main #workspaces {
+    padding-left: 12px;
+    padding-right: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+    min-height: 28px;
+}
+
+#waybar.main #workspaces button {
+    color: #45475a;
+    background: transparent;
+    border: 1.5px solid transparent;
+    min-width: 28px;
+    padding-left: 0;
+    padding-right: 0;
+    transition: all 0.25s ease;
+    font-style: italic;
+    margin: 0 2px;
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 28px;
+    background-image: linear-gradient(
+        -63.435deg,
+        transparent 25%,
+        @background2 25%,
+        @background2 75%,
+        transparent 75%
+    );
+}
+
+/* Focused workspace */
+#waybar.main #workspaces button.visible {
+    color: @text;
+    background-image: linear-gradient(
+        -63.435deg,
+        transparent 25%,
+        @caution 25%,
+        @caution 75%,
+        transparent 75%
+    );
+}
+
+/* Focused workspace & monitor */
+#waybar.main #workspaces button.active {
+    color: @window;
+    background-image: linear-gradient(
+        -63.435deg,
+        transparent 24%,
+        @sepepator 24%,
+        @sepepator 28%,
+        @background1 28%,
+        @background1 73%,
+        @sepepator 73%,
+        @sepepator 76%,
+        transparent 76%
+    );
+}
+
+/* Style when cursor is on the button */
+#waybar.main #workspaces button:hover {
+    color: @window;
+}
+
+/* #waybar.main #workspaces button.active:hover { */
+/*   color: @background2; */
+/*   background-image: linear-gradient( */
+/*     -63.435deg, */
+/*     transparent 24%, */
+/*     @sepepator 24%, */
+/*     @sepepator 28%, */
+/*     @window 28%, */
+/*     @window 73%, */
+/*     @sepepator 73%, */
+/*     @sepepator 76%, */
+/*     transparent 76% */
+/*   ); */
+/* } */
+
+/* Special workplace animation */
+#waybar.main #workspaces button.special.active {
+    transition: all 0s ease;
+    border: 1.5px solid transparent;
+    color: @sepepator;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-name: blink-special-workspace;
+    animation-duration: 1s;
+    animation-timing-function: steps(15);
+}
+
+/* }}} */
+
+/* Tooltip */
+/* {{{ */
+tooltip {
+    background: @background2;
+    border: 3px solid @caution;
+    border-radius: 8px;
+    font-weight: 500;
+    font-family: "JetBrains Mono Nerd Font";
+}
+
+/* }}} */
+
+/* Battery indicator bar */
+/* {{{ */
+#waybar.indicator {
+    font-size: 0;
+    color: transparent;
+    background: transparent;
+}
+
+#waybar.indicator #custom-batteryindicator {
+    border: none;
+    border-radius: 0 0 4px 4px;
+    background: @sepepator;
+    padding-left: 5000px;
+    min-height: 4px;
+}
+
+#waybar.indicator #custom-batteryindicator.charging {
+    background: @misc;
+}
+
+#waybar.indicator #custom-batteryindicator.full {
+    background: @misc;
+}
+
+#waybar.indicator #custom-batteryindicator.warning {
+    background: @warning;
+}
+
+#waybar.indicator #custom-batteryindicator.critical {
+    background: @warning;
+    animation: blink-critical-battery 1s steps(15) infinite alternate;
+}
+
+@keyframes blink-critical-battery {
+    to { opacity: 0.5; }
+}
+
+/* }}} */

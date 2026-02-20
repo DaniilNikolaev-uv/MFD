@@ -1,0 +1,112 @@
+[
+  {
+      "layer": "top",
+      "position": "top",
+      "name": "main",
+      "height": 30,
+      "reload_style_on_change": true,
+
+      "margin-top": 10,
+      "margin-left": 24,
+      "margin-right": 24,
+
+      "modules-left": [
+          "hyprland/workspaces",
+      ],
+
+      "modules-center": [
+          "hyprland/window",
+      ],
+
+      "modules-right": [
+          "clock",
+          "hyprland/language",
+          "backlight",
+          "battery",
+      ],
+
+      "battery": {
+          "interval": 30,
+          "bat": "BAT1",
+          "adapter": "AC",
+          "format": "{icon} {capacity}%",
+          "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+          "format-charging": "󰂄 {capacity}%",
+          "format-full": "󰚥 {capacity}%",
+          "tooltip-format": "{capacity}%\n{status}",
+      },
+
+      "backlight": {
+          "device": "intel_backlight",
+          "format": "{icon} {percent}%",
+          "format-icons": ["󱩎", "󱩑", "󱩓", "󱩕", "󰛨"],
+          "scroll-step": 1,
+          "on-scroll-up": "brightnessctl set 2%-",
+          "on-scroll-down": "brightnessctl set +2%",
+      },
+
+      "clock": {
+          "interval": 1,
+          "format": "{:%H:%M   %a %d.%m}",
+          "tooltip-format": "{calendar}",
+          "calendar": {
+              "weeks-pos": "right",
+              "mode": "month",
+              "format": {
+                  "months": "<span color='#cba6f7'><b>{}</b></span>",
+                  "days": "<span color='#cdd6f4'><b>{}</b></span>",
+                  "weeks": "<span color='#94e2d5'> W{}</span>",
+                  "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+                  "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>",
+              },
+          },
+      },
+
+      "hyprland/language": {
+          "format": "{}",
+          "format-fi": "Vittu",
+          "format-ru": "Russian (Ru)",
+          "min-length": 8,
+          "on-click": "hyprctl switchxkblayout current next",
+          "tooltip": false,
+          "class": "language",
+      },
+
+      "network": {
+          "interval":2,
+          "format": "󱘖  Offline",
+          "format-wifi": "{icon} {essid}",
+          "format-ethernet": "󰈀 {ifname}",
+          "format-disconnected": "󱘖 Offline",
+          "tooltip-format-wifi": "{essid}\n{signalStrength}%\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
+          "tooltip-format-ethernet": "{ifname}\n󰇚 {bandwidthDownBits}\n󰕒 {bandwidthUpBits}",
+          "format-icons": ["󰤫", "󰤟", "󰤢", "󰤥", "󰤨"],
+      },
+
+      "hyprland/window": {
+          "format": "{title}",
+          "max-length": 48,
+          "tooltip": true,
+          "icon": true,
+          "icon-size": 18,
+      },
+
+      "hyprland/workspaces": {
+          "disable-scroll-wraparound": true,
+          "format": "{icon}",
+          "format-icons": {
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5",
+              "6": "6",
+              "7": "7",
+              "8": "8",
+              "9": "9",
+              "10": "10",
+              "default": "{}",
+          },
+      },
+  }
+]
