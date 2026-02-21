@@ -1,0 +1,16 @@
+theme = "default"
+
+[providers]
+prefixes = [
+  { provider = "websearch", prefix = "+" },
+]
+
+[[custom_commands]]
+name = "Wallpapers"
+prefix = "wp"
+# Путь к твоей папке с обоями
+dir = "~/Pictures/Wallpapers" 
+# Запуск твоего скрипта с передачей пути к файлу (%f)
+exec = "wallpaper-launcher.sh"
+# Включаем показ миниатюр
+show_images = true

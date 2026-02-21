@@ -15,7 +15,8 @@
 - test install script
 - maybe swap hyprpanel
 - fastfetch
-- rofi style (like in omarchy) (maybe this is walker)
+- switch rofi to walker ✅
+- wallpaper switc i walker
 - emoji picker ✅(50/50)
 - chaoric aur
 - redact a screenshot (like in omarchy)
