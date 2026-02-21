@@ -1,0 +1,8 @@
+{
+    "name": "wallpaper",
+    "prefix": "wp ",
+    "placeholder": "Выбрать обои...",
+    "exec": "find ~/Pictures/Wallpapers -type f \\( -name '*.jpg' -o -name '*.png' -o -name '*.jpeg' -o -name '*.webp' \\)",
+    "result_exec": "swww img {result} --transition-type wipe",
+    "icon": "image-x-generic"
+  }

@@ -1,8 +1,10 @@
 #!/bin/bash
-DIR="$HOME/Pictures/Wallpapers"
-PICS=$(ls $DIR)
-CHOICE=$(echo -e "$PICS" | rofi -dmenu -p "Выбрать обои")
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 
-if [ -n "$CHOICE" ]; then
-    swww img "$DIR/$CHOICE" --transition-type center
-fi
+selected=$(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.png" -o -name "*.jpeg" -o -name "*.webp" \) | \
+  xargs -I{} basename {} | \
+  walker --dmenu --placeholder "Выбрать обои...")
+
+[ -z "$selected" ] && exit 1
+
+swww img "$WALLPAPER_DIR/$selected" --transition-type wipe
