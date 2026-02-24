@@ -42,15 +42,55 @@ Personal dotfiles configuration for Arch Linux with Hyprland window manager.
 ```
 .dotfiles/
 ├── .config/
-│   └── hypr/
-│       ├── hyprland.conf
-│       ├── binds.conf
-│       ├── input.conf
-│       ├── monitors.conf
-│       ├── autostart.conf
-│       ├── hypridle.conf
-│       ├── permissions.conf
-│       └── scripts/
-│           └── emoji-picker.sh
+│   ├── elephant/
+│   │   └── providers/
+│   │       └── desktopapplications.so
+│   ├── fastfetch/
+│   │   └── config.jsonc
+│   ├── hypr/
+│   │   ├── appearance.conf
+│   │   ├── autostart.conf
+│   │   ├── binds.conf
+│   │   ├── env.conf
+│   │   ├── hypridle.conf
+│   │   ├── hyprland.conf
+│   │   ├── hyprlock.conf
+│   │   ├── input.conf
+│   │   ├── monitors.conf
+│   │   ├── permissions.conf
+│   │   ├── programs.conf
+│   │   ├── windows.conf
+│   │   └── scripts/
+│   │       ├── emoji-picker.sh
+│   │       └── screenshot.sh
+│   ├── kitty/
+│   │   └── kitty.conf
+│   ├── mako/
+│   │   └── config
+│   ├── nvim/
+│   │   ├── init.lua
+│   │   └── lua/
+│   │       ├── autocmds.lua
+│   │       ├── chadrc.lua
+│   │       ├── mappings.lua
+│   │       ├── options.lua
+│   │       └── plugins/
+│   │           └── init.lua
+│   ├── omp/
+│   │   └── catppucin.omp.json
+│   ├── walker/
+│   │   ├── config.toml
+│   │   ├── wallpaper-launcher.sh
+│   │   └── plugins/
+│   │       └── wallpaper.json
+│   └── waybar/
+│       ├── config.jsonc
+│       └── style.css
+├── Pictures/
+│   ├── Screenshots/
+│   └── Wallpapers/
+├── pkg/
+│   └── pkglist.txt
+├── install(beta).sh
 └── README.md
 ```
