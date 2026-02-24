@@ -1,0 +1,44 @@
+### Catppuccin Mocha style for mako
+# Palette reference: https://github.com/catppuccin/catppuccin
+
+# removed legacy [global] section
+font=JetBrains Mono 15
+width=360
+height=120
+max-icon-size=48
+icons=1
+markup=1
+
+anchor=top-right
+margin=16
+padding=14
+border-size=2
+border-radius=10
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+progress-color=over #cba6f7
+
+outer-margin=8
+default-timeout=5000
+ignore-timeout=1
+
+history=1
+
+[urgency=low]
+border-color=#45475a
+text-color=#a6adc8
+background-color=#181825
+
+[urgency=normal]
+border-color=#89b4fa
+text-color=#cdd6f4
+background-color=#1e1e2e
+
+[urgency=high]
+border-color=#f38ba8
+text-color=#f9e2af
+background-color=#11111b
+default-timeout=0
+
