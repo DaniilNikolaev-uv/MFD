@@ -9,6 +9,10 @@ zsh-syntax-highlighting
     zsh-autosuggestions
     z)
 
+nv() {
+  local target="${1:-.}"
+  (cd "$target" && nvim .)
+}
 eval "$(oh-my-posh init zsh --config ~/.config/omp/catppucin.omp.json)"
 source $ZSH/oh-my-zsh.sh
 
