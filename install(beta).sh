@@ -3,7 +3,7 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PKGLIST_FILE="${REPO_DIR}/pkglist.txt"
+PKGLIST_FILE="${REPO_DIR}/pkg/pkglist.txt"
 
 log() {
   printf '[*] %s\n' "$*" >&2
