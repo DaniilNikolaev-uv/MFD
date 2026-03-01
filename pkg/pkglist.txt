@@ -10,15 +10,13 @@ code
 cursor-bin
 dunst
 efibootmgr
-elephant-clipboard
-elephant-desktopapplications
-elephant-files
-elephant-menus
 fastfetch
 feh
 file-roller
 firefox
 git
+go
+rust
 gphoto2
 grim
 grimblast-git
@@ -77,7 +75,6 @@ uwsm
 v2rayn-bin
 vim
 vulkan-radeon
-walker-bin
 waybar
 webcamize
 wf-recorder

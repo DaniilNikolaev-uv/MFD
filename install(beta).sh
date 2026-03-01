@@ -148,6 +148,60 @@ install_pkglist() {
   done < "$PKGLIST_FILE"
 }
 
+install_elephant() {
+  if command -v elephant >/dev/null 2>&1; then
+    log "elephant уже установлен, пропускаю установку из исходников."
+    return 0
+  fi
+
+  local tmpdir
+  tmpdir="$(mktemp -d)"
+  log "Клонирую elephant в ${tmpdir}"
+
+  (
+    cd "$tmpdir"
+    git clone https://github.com/abenz1267/elephant
+    cd elephant/cmd/elephant
+    go install elephant.go
+
+    mkdir -p "${HOME}/.config/elephant/providers"
+    cd ../../internal/providers/desktopapplications
+    go build -buildmode=plugin
+    cp desktopapplications.so "${HOME}/.config/elephant/providers/"
+  ) || {
+    warn "Не удалось установить elephant из исходников."
+    return 1
+  }
+
+  log "elephant установлен из исходников."
+}
+
+install_walker() {
+  if command -v walker >/dev/null 2>&1; then
+    log "walker уже установлен, пропускаю установку из исходников."
+    return 0
+  fi
+
+  local tmpdir
+  tmpdir="$(mktemp -d)"
+  log "Клонирую walker в ${tmpdir}"
+
+  (
+    cd "$tmpdir"
+    git clone https://github.com/abenz1267/walker.git
+    cd walker
+    cargo build --release
+
+    mkdir -p "${HOME}/.local/bin"
+    cp ./target/release/walker "${HOME}/.local/bin/walker"
+  ) || {
+    warn "Не удалось установить walker из исходников."
+    return 1
+  }
+
+  log "walker установлен из исходников (в ~/.local/bin/walker)."
+}
+
 enable_services() {
   # Список типовых сервисов, которые логично включить для этой конфигурации.
   # Если какого‑то сервиса нет в системе, просто пропускаем.
@@ -206,6 +260,8 @@ main() {
 
   update_system
   install_pkglist
+  install_elephant
+  install_walker
   enable_services
   stow_dotfiles
 
