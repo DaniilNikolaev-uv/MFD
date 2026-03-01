@@ -175,6 +175,8 @@ main() {
   require_arch
   require_tools
 
+  ensure_yay || warn "Не удалось установить yay, продолжаю без AUR."
+
   log "Запуск install-скрипта для Arch Linux dotfiles."
   log "Репозиторий: ${REPO_DIR}"
 
