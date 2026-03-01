@@ -3,6 +3,7 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="${HOME}/.dotfiles"
 PKGLIST_FILE="${REPO_DIR}/pkg/pkglist.txt"
 
 log() {
@@ -29,6 +30,26 @@ require_tools() {
   if ! command -v sudo >/dev/null 2>&1 && [[ "${EUID:-0}" -ne 0 ]]; then
     die "Нужен sudo или запуск от root."
   fi
+}
+
+prepare_dotfiles() {
+  mkdir -p "$DOTFILES_DIR"
+
+  local name src dst
+
+  for name in ".config" "Pictures"; do
+    src="${REPO_DIR}/${name}"
+    dst="${DOTFILES_DIR}/${name}"
+
+    if [[ -d "$src" ]]; then
+      if [[ -e "$dst" ]]; then
+        warn "В ${DOTFILES_DIR} уже есть ${name}, пропускаю перенос."
+      else
+        log "Переношу ${name} в ${DOTFILES_DIR}"
+        mv "$src" "$DOTFILES_DIR"/
+      fi
+    fi
+  done
 }
 
 run_with_sudo() {
@@ -155,12 +176,13 @@ stow_dotfiles() {
   fi
 
   log "Линкую dotfiles через stow..."
-  cd "$REPO_DIR"
+  cd "$DOTFILES_DIR"
 
   local pkgs=()
 
   # Добавляй сюда новые модули по мере необходимости.
   [[ -d ".config" ]] && pkgs+=(".config")
+  [[ -d "Pictures" ]] && pkgs+=("Pictures")
 
   if ((${#pkgs[@]} == 0)); then
     warn "Не найдено ни одного каталога для stow. Пропускаю."
@@ -176,6 +198,8 @@ main() {
   require_tools
 
   ensure_yay || warn "Не удалось установить yay, продолжаю без AUR."
+
+  prepare_dotfiles
 
   log "Запуск install-скрипта для Arch Linux dotfiles."
   log "Репозиторий: ${REPO_DIR}"
