@@ -172,8 +172,8 @@ stow_dotfiles() {
 }
 
 main() {
-  require_arch()
-  require_tools()
+  require_arch
+  require_tools
 
   log "Запуск install-скрипта для Arch Linux dotfiles."
   log "Репозиторий: ${REPO_DIR}"
